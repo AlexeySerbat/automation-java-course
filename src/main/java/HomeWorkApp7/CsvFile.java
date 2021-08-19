@@ -1,6 +1,5 @@
 package HomeWorkApp7;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
@@ -12,7 +11,7 @@ public class CsvFile extends AppData {
 
         AppData appData = new AppData();
         appData.setHeader(new String[]{"Value1", "Value2", "Value3"});
-        appData.setData(new int[]{123, 123, 300});
+        appData.setData(new int[]{123, 100, 300});
         header = appData.getHeader();
         data = appData.getData();
 
