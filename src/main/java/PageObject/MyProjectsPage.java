@@ -3,11 +3,9 @@ package PageObject;
 import Driver.DriverSettings;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 
 public class MyProjectsPage extends DriverSettings {
@@ -31,16 +29,6 @@ public class MyProjectsPage extends DriverSettings {
 
         public static WebElement firstOrgValue(WebDriver driver) {
             element = driver.findElement(By.xpath("//body/div[@id='select2-drop']/ul[2]/li[2]"));
-            return element;
-        }
-
-        public static WebElement contactDropdown(WebDriver driver) {
-            element = driver.findElement(By.xpath("//div[2]/fieldset[1]/div[4]/div[1]/div[2]/div[1]q"));
-            return element;
-        }
-
-        public static WebElement firstContactValue(WebDriver driver) {
-            element = driver.findElement(By.xpath("//div[8]/ul[2]/li[1]"));
             return element;
         }
 
