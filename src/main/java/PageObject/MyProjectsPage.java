@@ -1,9 +1,13 @@
 package PageObject;
 
 import Driver.DriverSettings;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class MyProjectsPage extends DriverSettings {
@@ -26,12 +30,12 @@ public class MyProjectsPage extends DriverSettings {
         }
 
         public static WebElement firstOrgValue(WebDriver driver) {
-            element = driver.findElement(By.xpath("//body/div[@id=\\'select2-drop\\']/ul[2]/li[2]"));
+            element = driver.findElement(By.xpath("//body/div[@id='select2-drop']/ul[2]/li[2]"));
             return element;
         }
 
         public static WebElement contactDropdown(WebDriver driver) {
-            element = driver.findElement(By.xpath("//div[1]/div[2]/fieldset[1]/div[4]/div[1]/div[2]/div[1]"));
+            element = driver.findElement(By.xpath("//div[2]/fieldset[1]/div[4]/div[1]/div[2]/div[1]q"));
             return element;
         }
 
@@ -69,29 +73,31 @@ public class MyProjectsPage extends DriverSettings {
             element = driver.findElement(By.cssSelector(".btn-group:nth-child(4) > .btn"));
             return element;
         }
+
+        public static WebElement successMsg(WebDriver driver) {
+            element = driver.findElement(By.xpath("//div[contains(text(),'Проект сохранен')]"));
+            return element;
+        }
     }
 
     public static class Methods {
-        public static void createProject(String name,
-                                         String departmentValue,
-                                         String projectCoordinatorValue,
-                                         String projectManagerValue,
-                                         String projectAdministratorValue,
-                                         String managerValue) {
+        public static void createProject(String name) {
             Elements.createProjectBtn(driver).click();
             GeneralMethods.waitForElement(Elements.projectNameField(driver));
             Elements.projectNameField(driver).sendKeys(name);
             Elements.organisationDropdown(driver).click();
             GeneralMethods.waitForElement(Elements.firstOrgValue(driver));
             Elements.firstOrgValue(driver).click();
-            Elements.contactDropdown(driver).click();
-            GeneralMethods.waitForElement(Elements.firstContactValue(driver));
-            Elements.firstContactValue(driver).click();
-            GeneralMethods.chooseFromSelectDropdown(Elements.departmentDropdown(driver), departmentValue);
-            GeneralMethods.chooseFromSelectDropdown(Elements.projectCoordinatorDropdown(driver), projectCoordinatorValue);
-            GeneralMethods.chooseFromSelectDropdown(Elements.projectManagerDropdown(driver), projectManagerValue);
-            GeneralMethods.chooseFromSelectDropdown(Elements.projectAdministratorDropdown(driver), projectAdministratorValue);
-            GeneralMethods.chooseFromSelectDropdown(Elements.managerDropdown(driver), managerValue);
+            GeneralMethods.chooseFromSelectDropdown(Elements.departmentDropdown(driver));
+            GeneralMethods.chooseFromSelectDropdown(Elements.projectCoordinatorDropdown(driver));
+            GeneralMethods.chooseFromSelectDropdown(Elements.projectManagerDropdown(driver));
+            GeneralMethods.chooseFromSelectDropdown(Elements.projectAdministratorDropdown(driver));
+            GeneralMethods.chooseFromSelectDropdown(Elements.managerDropdown(driver));
+        }
+
+        public static void verifyProjectCreated() {
+            GeneralMethods.waitForElement(Elements.successMsg(driver));
+            Assert.assertEquals("Проект сохранен", Elements.successMsg(driver).getText());
         }
 
         public static void saveAndCloseProject() {

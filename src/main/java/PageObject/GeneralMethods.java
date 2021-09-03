@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.UUID;
 
 public class GeneralMethods extends DriverSettings {
     static WebDriverWait wait = new WebDriverWait(driver, 50);
@@ -20,8 +21,13 @@ public class GeneralMethods extends DriverSettings {
         builder.moveToElement(element).perform();
     }
 
-    public static void chooseFromSelectDropdown(WebElement element, String element2) {
+    public static void chooseFromSelectDropdown(WebElement element) {
         Select select = new Select(element);
-        select.selectByValue(element2);
+        element.click();
+        select.selectByIndex(1);
+    }
+
+    public static String generateString() {
+        return UUID.randomUUID().toString();
     }
 }

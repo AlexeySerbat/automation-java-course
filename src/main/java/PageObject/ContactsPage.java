@@ -49,7 +49,7 @@ public class ContactsPage extends DriverSettings {
         }
 
         public static WebElement successCreatedContactMsg(WebDriver driver) {
-            element = driver.findElement(By.cssSelector("flash-messages-holder"));
+            element = driver.findElement(By.xpath("//div[contains(text(),'Контактное лицо сохранено')]"));
             return element;
         }
     }
@@ -75,7 +75,7 @@ public class ContactsPage extends DriverSettings {
 
         public static void verifyContactCreated() {
             GeneralMethods.waitForElement(Elements.successCreatedContactMsg(driver));
-            Assert.assertEquals(Elements.successCreatedContactMsg(driver).getText(), "Контактное лицо сохранено");
+            Assert.assertEquals("Контактное лицо сохранено", Elements.successCreatedContactMsg(driver).getText());
         }
     }
 }

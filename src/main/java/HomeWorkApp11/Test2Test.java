@@ -7,15 +7,11 @@ import PageObject.MainPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Test2Test extends DriverSettings {
-  private WebDriver driver;
 
   @BeforeEach
   public void setUpTest() {
-    driver = new ChromeDriver();
     DriverSettings.browserSettings();
     driver.get("https://crm.geekbrains.space");
   }
