@@ -5,8 +5,6 @@ import org.openqa.selenium.*;
 
 
 public class LoginPage extends DriverSettings {
-
-
     public static class Elements {
         static WebElement element;
 
@@ -27,7 +25,6 @@ public class LoginPage extends DriverSettings {
     }
 
     public static class Methods {
-
         public static void loginIntoApp(String login, String password) {
             GeneralMethods.waitForElement(Elements.loginInputField(driver));
             Elements.loginInputField(driver).sendKeys(login);

@@ -5,17 +5,17 @@ import PageObject.LoginPage;
 import PageObject.MainPage;
 import PageObject.MyProjectsPage;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Test1Test extends DriverSettings{
-  private WebDriver driver;
+  //private WebDriver driver;
 
   @BeforeEach
   public void setUpTest() {
-    driver = new ChromeDriver();
-    DriverSettings.browserSettings();
     driver.get("https://crm.geekbrains.space");
+    browserSettings();
   }
 
   @AfterEach
